@@ -248,8 +248,8 @@ div{
     gravity = 0.05;
     //Java juice
     images = {}
-    bread = [["aaaa.jpg",56,100], ["aaab.jpg",75,100], ["aaac.jpg",75,100], ["aaad.jpg",75,100], ["aaae.jpg",133,100], ["aaaf.jpg",133,100]];
-    skibidibread = {} // "aaaf.jpg":{"x":400,"y":711,"type":0-4} is 1 element of it 
+    bread = [["aaaa.webp",56,100], ["aaab.webp",75,100], ["aaac.webp",75,100], ["aaad.webp",75,100], ["aaae.webp",133,100], ["aaaf.webp",133,100]];
+    skibidibread = {} // "aaaf.webp":{"x":400,"y":711,"type":0-4} is 1 element of it 
     for (const banaan of bread) {
       skibidibread[banaan[0]] = {width:banaan[1], height:banaan[2]};
       im = new Image();
@@ -420,7 +420,7 @@ div{
     }
 
     function clearbread() {
-      document.getElementById("DogCount").innerText = "DogCount: 0"
+      document.getElementById("DogCount").innerText = "PetCount: 0"
       breadinfo=[]
     }
     let draggedBread = null; // Tracks the bread currently being dragged
