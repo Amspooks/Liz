@@ -1,1 +1,180 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OoooooOoooo</title>
+    <style>
+    .topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+        /* Set the body to black and hide the default cursor */
+        body {
+            background-color: black;
+            height: 100vh;
+            margin: 0;
+            cursor: none; /* Hide the default cursor */
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Create a spotlight effect with a circular shape */
+        .spotlight {
+            position: absolute;
+            width: 200px; /* Size of the flashlight */
+            height: 200px;
+            background: rgba(255, 255, 255, 0.3); /* Light effect */
+            border-radius: 50%;
+            pointer-events: none; /* Prevent the spotlight from interfering with other elements */
+            transform: translate(-50%, -50%); /* Center it on the cursor */
+            transition: all 0.1s ease;
+        }
+
+        /* Apply a darker overlay to the rest of the screen */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9); /* Dark overlay */
+            z-index: -1; /* Make sure it's behind the spotlight */
+        }
+
+        /* Navigation bar styling */
+        .topnav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            overflow: hidden;
+            z-index: 10; /* Ensure it's above the spotlight */
+        }
+
+        .topnav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Hide buttons initially */
+        .button {
+            position: absolute;
+            color: white;
+            background-color: black;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 5px;
+            opacity: 0; /* Make buttons invisible */
+            transition: opacity 0.2s ease;
+        }
+
+        /* Button positions */
+        #button1 {
+            top: 100px;
+            left: 100px;
+        }
+        #button2 {
+            top: 300px;
+            left: 500px;
+        }
+        #button3 {
+            top: 500px;
+            left: 200px;
+        }
+        #button4 {
+            top: 200px;
+            right: 100px;
+        }
+        #button5 {
+            top: 400px;
+            right: 300px;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="topnav">
+    <a href="index.html">Home</a>
+    <a href="twopage.html">Pet Time</a>
+    <a class="active" href="threepage.html">Spooky</a>
+</div>
+
+<div class="spotlight" id="spotlight"></div>
+
+<!-- Buttons that will be revealed -->
+<button class="button" id="button1" onclick="window.location.href='https://www.youtube.com/watch?v=GEfkMr_5EZ0&ab_channel=rachie-Topic';">Mystery Button</button>
+<button class="button" id="button2" onclick="window.location.href='https://www.youtube.com/watch?v=LwGc98xzGqs&ab_channel=minish';">Scary Button</button>
+<button class="button" id="button3" onclick="window.location.href='https://www.youtube.com/watch?v=2QmNLIsQ1l8&ab_channel=Markiplier';">Good Button</button>
+<button class="button" id="button4" onclick="window.location.href='https://www.youtube.com/watch?v=na6rDITSKZk&ab_channel=McSilly';">Music Button</button>
+<button class="button" id="button5" onclick="window.location.href='https://www.youtube.com/watch?v=2QlUpaQ2CjY&ab_channel=JennGalaxy';">I'm spiraling</button>
+
+<script>
+    const spotlight = document.getElementById('spotlight');
+    const buttons = document.querySelectorAll('.button');
+
+    // Update the position of the spotlight to follow the mouse cursor
+    document.addEventListener('mousemove', function(event) {
+        const mouseX = event.pageX;
+        const mouseY = event.pageY;
+
+        spotlight.style.left = `${mouseX}px`;
+        spotlight.style.top = `${mouseY}px`;
+
+        // Check if the spotlight is near any button, and reveal it
+        buttons.forEach(button => {
+            const buttonRect = button.getBoundingClientRect();
+            const buttonX = buttonRect.left + buttonRect.width / 2;
+            const buttonY = buttonRect.top + buttonRect.height / 2;
+
+            // Check if the button's center is inside the spotlight
+            const distance = Math.sqrt(Math.pow(mouseX - buttonX, 2) + Math.pow(mouseY - buttonY, 2));
+            
+            if (distance < spotlight.offsetWidth / 2) {
+                button.style.opacity = 1; // Reveal the button
+            } else {
+                button.style.opacity = 0; // Keep it hidden
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
+
