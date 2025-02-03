@@ -127,7 +127,7 @@ div{
   </div>
 <body>
     <!-- Only this section will be centered -->
-  <p>I like Dogs</p>
+  <p>Hehe</p>
 	  <p>Click and hold to drag them</p>
   <p id="DogCount">PetCount: 0</p>
 
@@ -249,7 +249,7 @@ div{
     //Java juice
     images = {}
     bread = [["aaaa.jpg",56,100], ["aaab.jpg",75,100], ["aaac.jpg",75,100], ["aaad.jpg",75,100], ["aaae.jpg",133,100], ["aaaf.jpg",133,100]];
-    skibidibread = {} // "pupsies.jpg":{"x":400,"y":711,"type":0-4} is 1 element of it 
+    skibidibread = {} // "aaaf.jpg":{"x":400,"y":711,"type":0-4} is 1 element of it 
     for (const banaan of bread) {
       skibidibread[banaan[0]] = {width:banaan[1], height:banaan[2]};
       im = new Image();
@@ -405,7 +405,7 @@ div{
 
     function addbread()
     {
-      document.getElementById("DogCount").innerText = "DogCount: "+(breadinfo.length+1)
+      document.getElementById("DogCount").innerText = "PetCount: "+(breadinfo.length+1)
       imgnum = Math.floor(Math.random()*bread.length);
       breadinfo.push(
         {
