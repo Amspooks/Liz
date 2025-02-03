@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="styles.css" />
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="active" href="index.html">Home</a>
+  <a href="twopage.html">Bread Time</a>
+  <a href="threepage.html">Buttons</a>
+  <a href="fourpage.html">Racing</a>
+</div>
+
+<div style="padding-left:16px">
+</div>
+
+</body>
+
+	
+  <style>
+  .button {
+    background-color: #ffffff;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body style="background-color: #ffbbbb;">
+
+  <h1 class="center">Your site</h1>
+  <h4>You have wasted:</h4>
+  <h3 id="timerytimer">0</h3>
+  <h4>seconds on this site</h4>
+  <Br>
+    <!--Astro is so short lol-->
+  <p>Hello! Here is a website containing a bunch of shitty stuff for you!!! There are a bunch of hidden <a style="color:black" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" title="You found me!"> secrets</a> for your personal entertainment. Have fun!</p>
+  <audio id="sound1" src="metalpipe.mp3" preload="auto"></audio>
+  <button id="funbutton" style="background-color: black;color:green;border-radius:5px;" onclick="clickSoundButton()" title="Don't do it">
+    Fun sounds!
+  </button> 
+
+  <script id = btncode>
+    function changeImage() {
+      const img = document.getElementById("thumbsupimage");
+      if (button.pressed) {
+        BtnPressed = !BtnPressed;
+      }
+      if (BtnPressed) {
+        button.textContent = "Hello!";
+      }
+      else{
+        button.textContent = "kys";
+      }
+    }
+  </script>
+  <script id = yippee>
+    let BtnPressed = false;
+    function changeImage() {
+      const img = document.getElementById("thumbsupguy");
+      const button = document.getElementById("funbutton");
+      BtnPressed = !BtnPressed;
+      if (BtnPressed) {
+        img.src = "eee.jpeg";
+      }
+      else{
+        img.src = "thumbsupguy.png";
+      }
+    }
+    
+  </script>
+  <script id = timer>
+    let number = 0;
+    const numberElement = document.getElementById("timerytimer");
+
+    setInterval(() => {
+      number++;
+      numberElement.textContent = number;
+    }, 1000); 
+    
+  </script>
+  <div class="container">
+    <img src="thumbsupguy.png" alt="Avatar" class="image" id="thumbsupguy" width="300" class="center" onclick="changeImage()" margin=auto>
+    <div class="overlay">
+      <div class="text" title="More images!">Click to change </div> 
+    </div>
+  </div>
+  <video controls src="呪術廻戦 OP 廻廻奇譚 [ベース].mp4" width="500">
+  </video>
+<br>
+<br>
+<a href="https://patreon.com/Amspooks?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink">
+<button class="btn">I need money</button>
+</a>
+<br>
+<br>
+<head>
+ <title>
+        Change Button Label
+    </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 40px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    </h3>
+    <button onclick="changeLabel()">
+	I might do something
+    </button>
+    <script>
+        function changeLabel() {
+            const button = 
+                document.querySelector('button');
+            button.innerHTML = 'Woah Secret!';
+        }
+    </script>
+</body>
+    <script>
+      var counter1 = 0;
+      function clickSoundButton() {
+        counter1++;
+        console.log(counter1)
+        document.getElementById('sound1').cloneNode(true).play();
+        if (counter1 >= 10)
+        {
+          window.open("https://www.youtube.com/shorts/YFRRwPNKv0A");
+        }
+      }
+    </script>
+</body>
+</section>
+</body>
+</html>
