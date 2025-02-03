@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Friendship</title>
+  <style>
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+/* } */
+}
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+    #randomButton {
+      position: absolute; /* Ensure button is absolutely positioned */
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #f0d1a0;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      transition: transform 0.2s ease, top 0.2s ease, left 0.2s ease;
+    }
+
+    #randomButton2 {
+      position: absolute; /* Ensure button is absolutely positioned */
+      padding: 10px 20px;
+      left: 150px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #e46c66;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      transition: transform 0.2s ease, top 0.2s ease, left 0.2s ease;
+    }
+
+    /* Blow-up animation */
+    .blow-up {
+      animation: blowUp 0.4s ease-out forwards;
+    }
+
+    @keyframes blowUp {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    .center-text {
+      position: absolute;
+      top: 20px; /* Set the top position near the top of the page */
+      left: 50%;
+      transform: translate(-50%, -30%);
+      font-size: 36px;
+      font-family: papyrus, sans-serif;
+      color: white;
+      text-align: center;
+    }
+	  p {
+  font-family: papyrus;
+  font-size: 20px;
+  color: #000000;
+}
+h1 {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: #000000;
+}
+h2 {
+  font-family: papyrus;
+  font-size: 20px;
+  color: #000000;
+}
+h3 {
+  font-family: papyrus;
+  font-size: 20px;
+  color: #000000;
+}
+h4 {
+  font-family: papyrus;
+  font-size: 20px;
+  color: #000000;
+}
+div{
+  font-family: papyrus;
+  font-size: 20px;
+  color: #000000;
+}
+	          html, body {
+            background-color: #ffbbbb;
+            height: 100%; /* Ensure full height coverage */
+            margin: 0; /* Remove default margin */
+  </style>
+</head>
+  <body onload="breadgame = setInterval(loadframe, 10);" onmousedown="mousedown(event)" onmousemove="mousemoving(event)" onmouseup="mouseup(event)">
+  <div class="topnav">
+    <a href="twopage.html">Home</a>
+    <a class="active" href="index.html">Pet Time</a>
+    <a href="threepage.html">Spooky</a>
+  </div>
+
+  <div style="padding-left:16px">
+  </div>
+<body>
+    <!-- Only this section will be centered -->
+  <p>I like Dogs</p>
+	  <p>Click and hold to drag the dogs</p>
+  <p id="DogCount">PetCount: 0</p>
+
+  <button id="randomButton">Pets!!</button>
+  <button id="randomButton2">ByeBye</button>
+
+  <script>
+
+    const button = document.getElementById('randomButton');
+    const messages = [
+      "Ow",
+      "Stop it",
+      "That hurts",
+      ":(",
+      "You're being mean",
+      "Ouch",
+      "Missed me that time",
+      "Zoinks",
+      "Hehe",
+      "I'm a button",
+      "???",
+      "What",
+      "Stop clicking",
+      "I give up",
+      "Uh...Ow?",
+      "Stop itttttttt",
+      "Dogs",
+      "I'm out of messages",
+      "Hello!",
+      "Cats",
+      "Hi"
+    ];
+
+    const button2 = document.getElementById('randomButton2');
+    const messages2 = [
+      "Delete",
+      "Destroy",
+      "Explode",
+      "Death",
+      "Detonate",
+      "Nuclear",
+      "Bomb",
+      "Terminate",
+      "Explosion",
+      "Boom boom",
+      "Nice!",
+      "aghhh",
+      "So mean"
+    ];
+
+    button.addEventListener('click', () => {
+      addbread()
+
+      // Randomly pick a message from the array
+      const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+      // Set the button text to the randomly selected message
+      button.textContent = randomMessage;
+
+      // Add the blow-up animation class
+      button.classList.add('blow-up');
+
+      // Remove the class after the animation ends
+      setTimeout(() => {
+        button.classList.remove('blow-up');
+      }, 400); // Matches the duration of the animation
+
+      // Get the dimensions of the viewport
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+
+      // Generate random positions
+      const randomX = Math.random() * (viewportWidth - button.offsetWidth);
+      const randomY = Math.random() * (viewportHeight - button.offsetHeight);
+
+      // Set the button's new position
+      button.style.left = `${randomX}px`;
+      button.style.top = `${randomY}px`;
+    });
+
+    button2.addEventListener('click', () => {
+      clearbread()
+      // Randomly pick a message from the array
+      const randomMessage2 = messages2[Math.floor(Math.random() * messages2.length)];
+
+      // Set the button text to the randomly selected message
+      button2.textContent = randomMessage2;
+
+      // Add the blow-up animation class
+      button2.classList.add('blow-up');
+
+      // Remove the class after the animation ends
+      setTimeout(() => {
+        button2.classList.remove('blow-up');
+      }, 400); // Matches the duration of the animation
+
+      // Get the dimensions of the viewport
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+
+      // Generate random positions
+      const randomX2 = Math.random() * (viewportWidth - button2.offsetWidth);
+      const randomY2 = Math.random() * (viewportHeight - button2.offsetHeight);
+
+      // Set the button's new position
+      button2.style.left = `${randomX2}px`;
+      button2.style.top = `${randomY2}px`;
+    });
+  </script>
+  
+  <canvas id="breadbox" width="700" height="700" style="border:1px solid #dfdfdf;"> 
+  <!--Dog box :)--> 
+  </canvas>
+  
+  <script>
+    var canvas = document.getElementById("breadbox");
+    var ctx = canvas.getContext("2d"); //stupid context >:(
+    gravity = 0.05;
+    //Java juice
+    images = {}
+    bread = [["honkshoo.jpg",75,100], ["mop.jpg",75,100], ["pup.jpg",75,100], ["pupper.jpg",56,100], ["pupsies.jpg",56,100]];
+    skibidibread = {} // "pupsies.jpg":{"x":400,"y":711,"type":0-4} is 1 element of it 
+    for (const banaan of bread) {
+      skibidibread[banaan[0]] = {width:banaan[1], height:banaan[2]};
+      im = new Image();
+      im.src=[banaan[0]];
+      images[banaan[0]] = im; // do you want me to add the width and height of the image to it? no :)
+    }
+
+    
+
+    for (const breadimg of bread)
+    
+    //BREAD START AT TOP MIDDLE!!!! Coordinates start at top right.
+    //Each bread is represented with an array:
+    //First two numbers - position coordinates
+    //Last number - What type of bread it is
+    breadinfo = []; 
+
+    function loadframe()
+    {
+      // do the game logic stuff
+      for (const breaddata of breadinfo)
+      {
+        if (!breaddata.chosenOne) // only if the bread is not the chosen one
+        {
+          breaddata.yvel -= gravity;
+          breaddata.y -= breaddata.yvel;
+        } else
+        {
+          breaddata.yvel = 0 // make sure it doesnt go anywhere
+        }
+
+        floorlevel = 700-skibidibread[breaddata.srcname].height/2;
+        ceilinglevel = skibidibread[breaddata.srcname].height/2;
+        rightwalllevel = 700-skibidibread[breaddata.srcname].width/2;
+        leftwalllevel = skibidibread[breaddata.srcname].width/2;
+        if (breaddata.y >= floorlevel) // these are checks to see if the bread is dragged out of bounds
+        {
+          breaddata.y = floorlevel;
+        }
+        if (breaddata.y <= ceilinglevel)
+        {
+          breaddata.y = ceilinglevel;
+        }
+        if (breaddata.x >= rightwalllevel)
+        {
+          breaddata.x = rightwalllevel;
+        }
+        if (breaddata.x <= leftwalllevel)
+        {
+          breaddata.x = leftwalllevel;
+        }
+
+      }
+      // draw the current frame
+      drawframe();
+    }
+
+    function mousedown(evt)
+    {
+      for (const breaddata of breadinfo)
+      {
+        xyrange = [
+          breaddata.x - skibidibread[breaddata.srcname].width/2, 
+          breaddata.x + skibidibread[breaddata.srcname].width/2,
+          breaddata.y - skibidibread[breaddata.srcname].height/2,
+          breaddata.y + skibidibread[breaddata.srcname].height/2
+        ] // [left, right, up, down]
+        mousePos = getMousePos(evt)
+        if (xyrange[0] < mousePos.x && xyrange[1] > mousePos.x && xyrange[2] < mousePos.y && xyrange[3] > mousePos.y) // check if mousepos in xyrange "box"
+        {
+          //the chosen one
+          breaddata.x = mousePos.x
+          breaddata.y = mousePos.y
+          breaddata.yvel = 0
+          breaddata.chosenOne = true
+          break
+        }
+      }
+    }
+
+    function mousemoving(evt)
+    {
+      mousePos = getMousePos(evt)
+      for (const breaddata of breadinfo)
+      {
+        if (breaddata.chosenOne) // are you the chosen one??
+        {
+          breaddata.x = mousePos.x
+          breaddata.y = mousePos.y
+          floorlevel = 700-skibidibread[breaddata.srcname].height/2;
+          ceilinglevel = skibidibread[breaddata.srcname].height/2;
+          rightwalllevel = 700-skibidibread[breaddata.srcname].width/2;
+          leftwalllevel = skibidibread[breaddata.srcname].width/2;
+          if (breaddata.y >= floorlevel) // these are checks to see if the bread is dragged out of bounds
+          {
+            console.log("floorlevel")
+            breaddata.y = floorlevel;
+          }
+          if (breaddata.y <= ceilinglevel)
+          {
+            console.log("ceilinglevel")
+            breaddata.y = ceilinglevel;
+          }
+          if (breaddata.x >= rightwalllevel)
+          {
+            console.log("rightwall")
+            breaddata.x = rightwalllevel;
+          }
+          if (breaddata.x <= leftwalllevel)
+          {
+            console.log("leftwall")
+            breaddata.x = leftwalllevel;
+          }
+        }
+      }
+    }
+
+    function mouseup(evt)
+    {
+      //the bread is free!!!
+      for (const breaddata of breadinfo)
+      {
+        breaddata.chosenOne = false // liberate all of them it doesnt matter if they already are or not
+      }
+    }
+
+    function getMousePos(evt)
+    {
+      var rect = canvas.getBoundingClientRect(), // abs. size of element
+      scaleX = canvas.width / rect.width,    // relationship bitmap vs. element for x
+      scaleY = canvas.height / rect.height;  // relationship bitmap vs. element for y
+
+      return {
+        x: (evt.clientX - rect.left) * scaleX,   // scale mouse coordinates after they have
+        y: (evt.clientY - rect.top) * scaleY     // been adjusted to be relative to element
+      }
+}
+    
+    function skibidiimagecoord(imagename,coord) {
+      return [coord[0]-skibidibread[imagename].width/2,coord[1]-skibidibread[imagename].height/2]
+    }
+
+    function drawframe()
+    {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const breaddata of breadinfo) //ITERATE THROUGH EXISTING BREAD
+      {
+        //DRAW THE CURRENT BREAD (using the info stored in breadinfo)!
+        posdata = skibidiimagecoord(breaddata.srcname,[breaddata.x,breaddata.y]);
+        ctx.drawImage(breaddata.src, posdata[0],posdata[1]);
+      }
+    }
+
+    function addbread()
+    {
+      document.getElementById("DogCount").innerText = "DogCount: "+(breadinfo.length+1)
+      imgnum = Math.floor(Math.random()*bread.length);
+      breadinfo.push(
+        {
+          src: images[bread[imgnum][0]],
+          srcname: bread[imgnum][0],
+          x: 350,
+          y: 0,
+          yvel: 0,
+          chosenOne: false //true if bread is being picked up by mouse
+        }
+      )
+    }
+
+    function clearbread() {
+      document.getElementById("DogCount").innerText = "DogCount: 0"
+      breadinfo=[]
+    }
+    let draggedBread = null; // Tracks the bread currently being dragged
+let offsetX = 0, offsetY = 0; // Offset between the mouse and the bread's top-left corner
+
+// Add mouse event listeners to the canvas
+canvas.addEventListener("mousedown", (event) => {
+  const mouseX = event.offsetX;
+  const mouseY = event.offsetY;
+
+  // Check if the mouse is over any bread
+    for (let i = breadinfo.length - 1; i >= 0; i--) {
+      const breaddata = breadinfo[i];
+    const breadImage = skibidibread[breaddata.srcname];
+    const breadLeft = breaddata.x - breadImage.width / 2;
+    const breadRight = breaddata.x + breadImage.width / 2;
+    const breadTop = breaddata.y - breadImage.height / 2;
+    const breadBottom = breaddata.y + breadImage.height / 2;
+
+    if (mouseX >= breadLeft && mouseX <= breadRight && mouseY >= breadTop && mouseY <= breadBottom) {
+      draggedBread = breaddata;
+      offsetX = mouseX - breaddata.x;
+      offsetY = mouseY - breaddata.y;
+      break;
+    }
+  }
+});
+canvas.addEventListener("mousemove", (event) => {
+  if (draggedBread) {
+    // Update the dragged bread's position
+    draggedBread.x = event.offsetX - offsetX;
+    draggedBread.y = event.offsetY - offsetY;
+  }
+});
+
+canvas.addEventListener("mouseup", () => {
+  if (draggedBread) {
+    // Stop dragging
+    draggedBread = null;
+  }
+});
+
+// Update the loadframe function
+function loadframe() {
+  // Do the game logic stuff
+  for (const breaddata of breadinfo) {
+    if (breaddata !== draggedBread) {
+      // Only apply gravity if the bread is not being dragged
+      breaddata.yvel -= gravity;
+      breaddata.y -= breaddata.yvel;
+
+      const floorLevel = 700 - skibidibread[breaddata.srcname].height / 2;
+      if (breaddata.y >= floorLevel) {
+        breaddata.y = floorLevel;
+        breaddata.yvel = 0;
+      }
+    }
+  }
+
+  // Draw the current frame
+  drawframe();
+}
+// Function to check if two objects are colliding
+function isColliding(bread1, bread2) {
+  const bread1Left = bread1.x - skibidibread[bread1.srcname].width / 2;
+  const bread1Right = bread1.x + skibidibread[bread1.srcname].width / 2;
+  const bread1Top = bread1.y - skibidibread[bread1.srcname].height / 2;
+  const bread1Bottom = bread1.y + skibidibread[bread1.srcname].height / 2;
+
+  const bread2Left = bread2.x - skibidibread[bread2.srcname].width / 2;
+  const bread2Right = bread2.x + skibidibread[bread2.srcname].width / 2;
+  const bread2Top = bread2.y - skibidibread[bread2.srcname].height / 2;
+  const bread2Bottom = bread2.y + skibidibread[bread2.srcname].height / 2;
+
+  // Check for overlap (axis-aligned bounding box collision detection)
+  return !(bread1Right <= bread2Left || bread1Left >= bread2Right || bread1Bottom <= bread2Top || bread1Top >= bread2Bottom);
+}
+
+// Function to resolve collision by separating colliding bread objects
+function resolveCollision(bread1, bread2) {
+  const dx = bread1.x - bread2.x;
+  const dy = bread1.y - bread2.y;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+  const minDistance = (skibidibread[bread1.srcname].width / 2) + (skibidibread[bread2.srcname].width / 2);
+
+  // If the bread objects are overlapping, move them apart
+  if (distance < minDistance) {
+    // Calculate the amount to separate
+    const overlap = minDistance - distance;
+    const moveX = (dx / distance) * overlap;
+    const moveY = (dy / distance) * overlap;
+
+    // Move the bread objects apart by a small amount
+    bread1.x += moveX;
+    bread1.y += moveY;
+    bread2.x -= moveX;
+    bread2.y -= moveY;
+  }
+}
+
+// Modify loadframe to handle collision detection
+function loadframe() {
+  // Handle gravity and movement
+  for (const breaddata of breadinfo) {
+    if (breaddata !== draggedBread) {
+      breaddata.yvel -= gravity;
+      breaddata.y -= breaddata.yvel;
+
+      const floorLevel = 700 - skibidibread[breaddata.srcname].height / 2;
+      if (breaddata.y >= floorLevel) {
+        breaddata.y = floorLevel;
+        breaddata.yvel = 0;
+      }
+    }
+  }
+
+  // Check for collisions between all bread objects
+  for (let i = 0; i < breadinfo.length; i++) {
+    for (let j = i + 1; j < breadinfo.length; j++) {
+      if (isColliding(breadinfo[i], breadinfo[j])) {
+        resolveCollision(breadinfo[i], breadinfo[j]);
+      }
+    }
+  }
+
+  // Draw the current frame
+  drawframe();
+}
+  </script>
+</body>
+	  <audio src="OMORI OST - 001 Title [Extended].mp3" autoplay>
+<p>If you are reading this, it is because your browser does not support the audio element.     </p>
+<embed src="/music/good_enough.mp3" width="180" height="90" hidden="true" />
+</audio>
+</html>
+
+<!--<script type="module" src="render.js"></script>-->
